@@ -8,6 +8,10 @@ public class UIManager : MonoBehaviour
     #region Deklarasi
     public GameObject infoPanel;
 
+    [SerializeField]
+    private float delayLoading = 2f;
+    private float timeElapeds;
+
     #endregion
 
     #region Menu
@@ -85,6 +89,16 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Intro")
+        {
+            timeElapeds += Time.deltaTime;
+
+            if (timeElapeds > delayLoading)
+            {
+                Play();
+            }
+        }
+
         Level1();
         Level2();
     }
